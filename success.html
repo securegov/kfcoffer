@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Successful</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<style type="text/css">
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f9f9f9;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    padding: 20px;
+}
+
+.success-container {
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px 30px;
+    text-align: center;
+    width: 400px;
+}
+
+
+h1 {
+    color: #333;
+    font-size: 24px;
+    margin: 10px 0;
+}
+
+p {
+    color: #555;
+    font-size: 14px;
+    margin: 10px 0 20px;
+}
+
+.payment-details {
+    border-top: 1px solid #eee;
+    padding-top: 15px;
+    margin-top: 15px;
+    text-align: left;
+}
+
+.detail {
+    display: flex;
+    justify-content: space-between;
+    margin: 5px 0;
+}
+
+.icon img {
+	width: 100px;
+}
+
+strong {
+    color: #333;
+    font-size: 14px;
+}
+
+button {
+    background-color: black;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    font-size: 14px;
+    cursor: pointer;
+    margin-top: 20px;
+}
+
+button:hover {
+    background-color: #e4002b;
+}
+
+</style>
+<body>
+    <div class="success-container">
+        <div class="icon">
+            <img src="https://cdn2.iconfinder.com/data/icons/greenline/512/check-512.png"> <!-- Checkmark icon -->
+        </div>
+        <h1>Payment Successful</h1>
+        <p>Thank you for your payment. Your order is being processed, and you will receive a confirmation email shortly.</p>
+        <div class="payment-details">
+            <div class="detail">
+                <span>Amount Paid</span>
+                <strong>රු 692.78</strong>
+            </div>
+            <div class="detail">
+                <span>Payment Method</span>
+                <strong>Visa</strong>
+            </div>
+            <div class="detail">
+                <span>Transaction ID</span>
+                <strong>#2647996</strong>
+            </div>
+        </div>
+        <button onclick="window.location.href='index.html'">Go to Homepage</button>
+    </div>
+</body>
+
+</html>
